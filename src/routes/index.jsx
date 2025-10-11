@@ -2,7 +2,22 @@ import { createBrowserRouter } from 'react-router-dom'
 
 import AppLayout from '../components/layouts/AppLayout'
 import MainLayout from '../components/layouts/MainLayout'
-import { Home, Events, News, EventDetail, NewsDetail, EventRegistration, VanHoaLichSu, PhanTichGocNhin, Forum, LoginPage, RegisterPage } from '../pages'
+import {
+  Home,
+  Events,
+  News,
+  EventDetail,
+  NewsDetail,
+  EventRegistration,
+  VanHoaLichSu,
+  PhanTichGocNhin,
+  Forum,
+  LoginPage,
+  RegisterPage,
+  InfoPage,
+  FriendsPage,
+  ContactPage
+} from '../pages'
 
 const router = createBrowserRouter([
   {
@@ -54,6 +69,18 @@ const router = createBrowserRouter([
           {
             path: 'dangky',
             element: <RegisterPage />,
+          },
+          {
+            path: 'info',
+            element: <InfoPage />,
+          },
+          {
+            path: 'friends',
+            element: <FriendsPage />,
+          },
+          {
+            path: 'contact',
+            element: <ContactPage />,
           },
         ],
       },
