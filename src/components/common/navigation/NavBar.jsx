@@ -50,7 +50,17 @@ const NavBar = () => {
         { label: 'Donate / Ủng hộ', link: '/shop-donate' },
         { label: 'Thành viên VIP', link: '/shop-vip' }
       ]
+    },
+    {
+      label: 'Tài khoản và hỗ trợ ',
+      submenu: [
+        { label: 'Hồ sơ cá nhân ', link: '/info' },
+        { label: 'bạn bè ', link: '/friends' },
+        { label: 'liên hệ ', link: '/contact' }
+      ]
     }
+    
+
   ], [])
 
   const clearExistingTimeout = useCallback(() => {
