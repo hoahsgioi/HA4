@@ -1,12 +1,195 @@
 .friends-page {
   min-height: 100vh;
-  background: linear-gradient(135deg, #1a0e08 0%, #2a1810 50%, #3a2418 100%);
+  background: #f6eadf;
   padding: 2rem 1rem;
 }
 
 .friends-container {
   max-width: 1200px;
   margin: 0 auto;
+}
+
+/* User Profile Card */
+.user-profile-card {
+  background: rgba(42, 26, 15, 0.6);
+  backdrop-filter: blur(20px);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 213, 79, 0.1);
+  margin-bottom: 2rem;
+}
+
+.profile-banner {
+  height: 120px;
+  background: linear-gradient(135deg, #ffd54f 0%, #ff9800 50%, #3b2412 100%);
+  position: relative;
+}
+
+.profile-content {
+  padding: 0 2rem 2rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 2rem;
+  margin-top: -60px;
+  position: relative;
+}
+
+.profile-avatar-section {
+  flex-shrink: 0;
+}
+
+.profile-avatar-wrapper {
+  position: relative;
+  width: 140px;
+  height: 140px;
+}
+
+.profile-avatar {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  border: 6px solid rgba(42, 26, 15, 0.9);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+  object-fit: cover;
+  display: block;
+}
+
+.avatar-edit-btn {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 44px;
+  height: 44px;
+  background: linear-gradient(135deg, #ffd54f 0%, #ffb84d 100%);
+  border: 4px solid rgba(42, 26, 15, 0.9);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(255, 213, 79, 0.4);
+}
+
+.avatar-edit-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 16px rgba(255, 213, 79, 0.6);
+}
+
+.edit-icon {
+  width: 20px;
+  height: 20px;
+  color: #3b2412;
+}
+
+.avatar-edit-menu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin-top: 0.5rem;
+  background: rgba(26, 14, 8, 0.95);
+  backdrop-filter: blur(20px);
+  border: 2px solid rgba(255, 213, 79, 0.2);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+  z-index: 100;
+  min-width: 200px;
+  animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.avatar-option {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  width: 100%;
+  padding: 1rem 1.25rem;
+  background: transparent;
+  border: none;
+  color: #fff1c7;
+  font-size: 0.938rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: left;
+  border-bottom: 1px solid rgba(255, 213, 79, 0.1);
+}
+
+.avatar-option:last-child {
+  border-bottom: none;
+}
+
+.avatar-option:hover {
+  background: rgba(74, 45, 24, 0.5);
+  color: #ffd54f;
+}
+
+.avatar-option.cancel {
+  color: #ff6b6b;
+}
+
+.avatar-option.cancel:hover {
+  background: rgba(255, 107, 107, 0.1);
+}
+
+.option-icon {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+.profile-info {
+  flex: 1;
+  padding-top: 70px;
+}
+
+.profile-name {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #ffd54f;
+  margin-bottom: 0.5rem;
+}
+
+.profile-bio {
+  color: #b8a89a;
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.profile-stats {
+  display: flex;
+  gap: 3rem;
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.stat-value {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #ffd54f;
+}
+
+.stat-label {
+  font-size: 0.875rem;
+  color: #b8a89a;
 }
 
 /* Header */
@@ -345,6 +528,32 @@
     padding: 1rem 0.5rem;
   }
 
+  .profile-content {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 0 1.5rem 1.5rem;
+  }
+
+  .profile-info {
+    padding-top: 1rem;
+  }
+
+  .profile-name {
+    font-size: 1.5rem;
+  }
+
+  .profile-stats {
+    justify-content: center;
+    gap: 2rem;
+  }
+
+  .avatar-edit-menu {
+    right: auto;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
   .friends-header {
     flex-direction: column;
     align-items: flex-start;
@@ -387,6 +596,30 @@
   .header-icon .icon {
     width: 28px;
     height: 28px;
+  }
+
+  .profile-avatar-wrapper,
+  .profile-avatar {
+    width: 100px;
+    height: 100px;
+  }
+
+  .avatar-edit-btn {
+    width: 36px;
+    height: 36px;
+  }
+
+  .edit-icon {
+    width: 16px;
+    height: 16px;
+  }
+
+  .profile-banner {
+    height: 80px;
+  }
+
+  .profile-content {
+    margin-top: -50px;
   }
 
   .friend-avatar {

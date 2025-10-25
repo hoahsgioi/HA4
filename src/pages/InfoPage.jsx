@@ -4,6 +4,8 @@ import './InfoPage.css'
 
 const InfoPage = () => {
   const [activeTab, setActiveTab] = useState('account')
+  const [userAvatar, setUserAvatar] = useState('https://i.pravatar.cc/150?img=68')
+  const [isEditingAvatar, setIsEditingAvatar] = useState(false)
   const [formData, setFormData] = useState({
     fullName: 'Nguyễn Văn A',
     email: 'nguyenvana@example.com',
@@ -42,6 +44,26 @@ const InfoPage = () => {
     setPrivacy(prev => ({ ...prev, [key]: !prev[key] }))
   }
 
+  const handleAvatarChange = (e) => {
+    const file = e.target.files[0]
+    if (file) {
+      const reader = new FileReader()
+      reader.onloadend = () => {
+        setUserAvatar(reader.result)
+        setIsEditingAvatar(false)
+      }
+      reader.readAsDataURL(file)
+    }
+  }
+
+  const handleAvatarURL = () => {
+    const url = prompt('Nhập URL ảnh đại diện:')
+    if (url) {
+      setUserAvatar(url)
+      setIsEditingAvatar(false)
+    }
+  }
+
   const handleSaveProfile = () => {
     console.log('Save profile:', formData)
     // TODO: API call
@@ -65,13 +87,55 @@ const InfoPage = () => {
         {/* Header */}
         <div className="info-header">
           <div className="header-content">
-            <div className="header-icon">
-              <svg className="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-              </svg>
+            <div className="header-avatar-section">
+              <div className="header-avatar-wrapper">
+                <img src={userAvatar} alt="User Avatar" className="header-avatar" />
+                <button
+                  className="header-avatar-edit-btn"
+                  onClick={() => setIsEditingAvatar(!isEditingAvatar)}
+                  title="Thay đổi ảnh đại diện"
+                >
+                  <svg className="edit-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" />
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 13a3 3 0 11-6 0 3 3 0 016 0z" />
+                  </svg>
+                </button>
+                {isEditingAvatar && (
+                  <div className="header-avatar-edit-menu">
+                    <label className="header-avatar-option">
+                      <svg className="option-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" />
+                      </svg>
+                      <span>Tải ảnh lên</span>
+                      <input
+                        type="file"
+                        accept="image/*"
+                        onChange={handleAvatarChange}
+                        style={{ display: 'none' }}
+                      />
+                    </label>
+                    <button className="header-avatar-option" onClick={handleAvatarURL}>
+                      <svg className="option-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
+                      </svg>
+                      <span>Nhập URL</span>
+                    </button>
+                    <button
+                      className="header-avatar-option cancel"
+                      onClick={() => setIsEditingAvatar(false)}
+                    >
+                      <svg className="option-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                      </svg>
+                      <span>Hủy</span>
+                    </button>
+                  </div>
+                )}
+              </div>
             </div>
+
             <div>
-              <h1 className="header-title">Cài đặt tài khoản</h1>
+              <strong ><h1 className="header-title">Cài đặt tài khoản</h1></strong>
               <p className="header-subtitle">Quản lý thông tin và tùy chọn của bạn</p>
             </div>
           </div>
