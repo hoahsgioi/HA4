@@ -1,7 +1,7 @@
 .contact-page {
   padding: 2rem 0;
   min-height: calc(100vh - 60px);
-  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  background: #fef8f3;
 }
 
 .contact-container {
@@ -21,18 +21,18 @@
   width: 80px;
   height: 80px;
   margin: 0 auto 1.5rem;
-  background: linear-gradient(135deg, #ffd54f 0%, #ff9800 100%);
+  background: #b8906f;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 8px 16px rgba(255, 152, 0, 0.3);
+  box-shadow: 0 8px 16px rgba(59, 36, 18, 0.2);
 }
 
 .header-icon .icon {
   width: 40px;
   height: 40px;
-  color: #3b2412;
+  color: #fff;
 }
 
 .header-title {
@@ -70,7 +70,7 @@
 .contact-method-card:hover {
   transform: translateY(-4px);
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
-  border-color: #ffd54f;
+  border-color: #b8906f;
 }
 
 .method-icon {
@@ -123,7 +123,7 @@
   color: #3b2412;
   margin-bottom: 1.5rem;
   padding-bottom: 0.75rem;
-  border-bottom: 3px solid #ffd54f;
+  border-bottom: 3px solid #b8906f;
 }
 
 /* Contact Form */
@@ -165,7 +165,7 @@
 
 .form-textarea:focus {
   outline: none;
-  border-color: #ffd54f;
+  border-color: #b8906f;
   box-shadow: 0 0 0 3px rgba(255, 213, 79, 0.1);
 }
 
@@ -195,11 +195,11 @@
 }
 
 .faq-item:hover {
-  border-color: #ffd54f;
+  border-color: #b8906f;
 }
 
 .faq-item[open] {
-  border-color: #ffd54f;
+  border-color: #b8906f;
   background: #fffef7;
 }
 
@@ -227,7 +227,7 @@
 .faq-icon {
   width: 20px;
   height: 20px;
-  color: #ffd54f;
+  color: #b8906f;
   transition: transform 0.3s ease;
   flex-shrink: 0;
 }
@@ -245,7 +245,7 @@
 
 /* Help Box */
 .help-box {
-  background: linear-gradient(135deg, #ffd54f 0%, #ff9800 100%);
+  background: linear-gradient(135deg, #b8906f 0%, #7a5a42 100%);
   padding: 1.25rem;
   border-radius: 8px;
   display: flex;
